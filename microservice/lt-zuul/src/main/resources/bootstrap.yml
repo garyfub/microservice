@@ -1,0 +1,39 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: api-gateway
+  management:
+    security:
+      enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://me:1234@localhost:1000/eureka
+    registry-fetch-interval-seconds: 10
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    lt-auth: /auth/**
+    service-a: /srva/**
+    service-b: /srvb/**
+  sensitive-headers:
+
+security:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+  oauth2:
+    client:
+      clientId: app
+      clientSecret: app
+      grant-type: mobileapp
+    resource:
+      token-info-uri: http://localhost:2000/oauth/check_token
+      prefer-token-info: true
+      jwt:
+        key-uri: http://localhost:2000/oauth/token_key

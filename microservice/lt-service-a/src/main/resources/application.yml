@@ -1,0 +1,12 @@
+server:
+  port: 4001
+
+spring:
+  application:
+    name: service-a
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://me:1234@localhost:1000/eureka
+    registry-fetch-interval-seconds: 10
